@@ -5,17 +5,21 @@ import { AiOutlinePlus } from "react-icons/ai";
 
 import PageContent from "./components/PageContent";
 
-
-
-
 export const revalidate = 0;
 
 export default async function Home() {
   const songs = await getSongs();
   
-
-
+  const currentHour = new Date().getHours();
+  let greeting = "";
   
+  if (currentHour >= 0 && currentHour < 12) {
+    greeting = "Good Morning";
+  } else if (currentHour >= 12 && currentHour < 18) {
+    greeting = "Good Afternoon";
+  } else {
+    greeting = "Good Evening";
+  }
 
   return (
     <div
@@ -36,7 +40,7 @@ export default async function Home() {
               text-3xl 
               font-semibold
             ">
-              Welcome back
+            <span>{greeting}</span>
           </h1>
           <div 
             className="
@@ -63,10 +67,10 @@ export default async function Home() {
             Newest songs  
           </h1>
           <AiOutlinePlus
-          //onClick={onClick}
-          size={20}
-          className="text-neutral-400 cursor-pointer hover:text-white transition"
-        />
+            //onClick={onClick}
+            size={20}
+            className="text-neutral-400 cursor-pointer hover:text-white transition"
+          />
         </div>
         <PageContent songs={songs} />
       </div>
