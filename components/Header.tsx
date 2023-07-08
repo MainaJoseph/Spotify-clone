@@ -158,6 +158,7 @@ const Header: React.FC<HeaderProps> = ({
                 >
                   Log in
                 </Button>
+                
               </div>
             </>
           )}
