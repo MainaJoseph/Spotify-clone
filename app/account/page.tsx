@@ -1,8 +1,13 @@
-import Header from "@/components/Header";
+"use client"
 
+import Header from "@/components/Header";
 import AccountContent from "./components/AccountContent";
+import { useUser } from "@/hooks/useUser";
 
 const Account = () => {
+  const { user } = useUser();
+  const userEmail = user?.email;
+
   return (
     <div 
       className="
@@ -19,6 +24,9 @@ const Account = () => {
           <h1 className="text-white text-3xl font-semibold">
             Account Settings
           </h1>
+          {userEmail && (
+            <p className="p-2">Email: <span className="text-green-500 font-semibold">{userEmail}</span> </p>
+          )}
         </div>
       </Header>
       <AccountContent />
