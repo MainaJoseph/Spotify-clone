@@ -2,6 +2,9 @@
 
 A Spotify clone built using Next.js 13.4, TypeScript, Supabase, Stripe, React, and Tailwind CSS.
 
+![spotify](https://github.com/MainaJoseph/Spotify-clone/assets/75726095/b0c89968-4db5-456b-864f-5f0fc9c13890)
+
+
 ## Features
 
 - User authentication with Supabase
@@ -11,9 +14,9 @@ A Spotify clone built using Next.js 13.4, TypeScript, Supabase, Stripe, React, a
 - Integration with Stripe for premium subscription
 - Responsive design using Tailwind CSS
 
-## Demo
+## [Demo](https://spotify-clone-delta-azure.vercel.app/)
 
-You can check out the live demo of the Spotify Clone at [Demo Link](https://your-demo-link.com).
+You can check out the live demo of the Spotify Clone at [Demo Link](https://spotify-clone-delta-azure.vercel.app/).
 
 ## Technologies Used
 
