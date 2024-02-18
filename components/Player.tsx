@@ -17,20 +17,20 @@ const Player = () => {
   }
 
   return (
-    <div 
+    <div
       className="
         fixed 
         bottom-0 
         bg-black 
         w-full 
         py-2 
-        h-[100px] 
+        h-[80px] 
         px-4
       "
     >
       <PlayerContent key={songUrl} song={song} songUrl={songUrl} />
     </div>
   );
-}
+};
 
 export default Player;
