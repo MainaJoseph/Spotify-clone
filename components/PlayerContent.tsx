@@ -1,7 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
-import { AiFillStepBackward, AiFillStepForward, AiOutlineSync, AiOutlineBars, AiOutlinePlaySquare } from "react-icons/ai";
+import {
+  AiFillStepBackward,
+  AiFillStepForward,
+  AiOutlineSync,
+  AiOutlineBars,
+  AiOutlinePlaySquare,
+} from "react-icons/ai";
 import { FaRandom } from "react-icons/fa";
 import { GiMicrophone } from "react-icons/gi";
 import useSound from "use-sound";
@@ -21,7 +27,8 @@ interface PlayerContentProps {
 
 const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
   const player = usePlayer();
-  const [volume, setVolume] = useState(1);
+  const [volume, setVolume] = useState(0.2);
+  const [previousVolume, setPreviousVolume] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLooping, setIsLooping] = useState(false);
   const [isShuffling, setIsShuffling] = useState(false); // State variable for shuffle icon
@@ -129,8 +136,9 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
 
   const toggleMute = () => {
     if (volume === 0) {
-      setVolume(1);
+      setVolume(previousVolume); // Return to previous volume
     } else {
+      setPreviousVolume(volume); // Remember the previous volume before muting
       setVolume(0);
     }
   };
@@ -210,7 +218,11 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
             size={50}
             className={`text-neutral-400 cursor-pointer hover:text-green-600`}
           />
-          <VolumeIcon onClick={toggleMute} className="cursor-pointer" size={28} />
+          <VolumeIcon
+            onClick={toggleMute}
+            className="cursor-pointer"
+            size={28}
+          />
 
           <Slider value={volume} onChange={(value) => setVolume(value)} />
         </div>
