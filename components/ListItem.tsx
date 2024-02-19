@@ -11,15 +11,9 @@ interface ListItemProps {
   image: string;
   name: string;
   href: string;
-  isPlaying: boolean; // New prop to indicate if the item is currently playing
 }
 
-const ListItem: React.FC<ListItemProps> = ({
-  image,
-  name,
-  href,
-  isPlaying,
-}) => {
+const ListItem: React.FC<ListItemProps> = ({ image, name, href }) => {
   const router = useRouter();
   const authModal = useAuthModal();
   const { user } = useUser();
@@ -35,7 +29,7 @@ const ListItem: React.FC<ListItemProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`
+      className="
         relative 
         group 
         flex 
@@ -48,37 +42,31 @@ const ListItem: React.FC<ListItemProps> = ({
         hover:bg-neutral-100/20 
         transition 
         pr-4
-        ${
-          isPlaying ? "playing" : ""
-        } // Add 'playing' class if it's the currently playing item
-      `}
+      "
     >
       <div className="relative min-h-[64px] min-w-[64px]">
         <Image className="object-cover" src={image} fill alt="Image" />
       </div>
       <p className="font-medium truncate py-5">{name}</p>
-      {isPlaying && (
-        <div
-          className="
-            absolute 
-            wave 
-            transition 
-            opacity-0 
-            rounded-full 
-            flex 
-            items-center 
-            justify-center 
-            bg-green-500 
-            p-4 
-            drop-shadow-md 
-            right-5
-            group-hover:opacity-100 
-            hover:scale-110
-          "
-        >
-          <FaPlay className="text-black" />
-        </div>
-      )}
+      <div
+        className="
+          absolute 
+          transition 
+          opacity-0 
+          rounded-full 
+          flex 
+          items-center 
+          justify-center 
+          bg-green-500 
+          p-4 
+          drop-shadow-md 
+          right-5
+          group-hover:opacity-100 
+          hover:scale-110
+        "
+      >
+        <FaPlay className="text-black" />
+      </div>
     </button>
   );
 };
