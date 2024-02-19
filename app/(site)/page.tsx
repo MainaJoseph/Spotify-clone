@@ -4,15 +4,16 @@ import ListItem from "@/components/ListItem";
 import { AiOutlinePlus } from "react-icons/ai";
 
 import PageContent from "./components/PageContent";
+import AiPlus from "@/components/AiPlus";
 
 export const revalidate = 0;
 
 export default async function Home() {
   const songs = await getSongs();
-  
+
   const currentHour = new Date().getHours();
   let greeting = "";
-  
+
   if (currentHour >= 0 && currentHour < 12) {
     greeting = "Good Morning";
   } else if (currentHour >= 12 && currentHour < 18) {
@@ -34,15 +35,16 @@ export default async function Home() {
     >
       <Header>
         <div className="mb-2">
-          <h1 
+          <h1
             className="
             text-white 
               text-3xl 
               font-semibold
-            ">
+            "
+          >
             <span>{greeting}</span>
           </h1>
-          <div 
+          <div
             className="
               grid 
               grid-cols-1 
@@ -53,27 +55,21 @@ export default async function Home() {
               mt-4
             "
           >
-            <ListItem 
-              name="Liked Songs" 
-              image="/images/liked.png" 
-              href="liked" 
+            <ListItem
+              name="Liked Songs"
+              image="/images/liked.png"
+              href="liked"
             />
           </div>
         </div>
       </Header>
       <div className="mt-2 mb-7 px-6">
         <div className="flex justify-between items-center">
-          <h1 className="text-white text-2xl font-semibold">
-            Newest songs  
-          </h1>
-          <AiOutlinePlus
-            //onClick={onClick}
-            size={20}
-            className="text-neutral-400 cursor-pointer hover:text-white transition"
-          />
+          <h1 className="text-white text-2xl font-semibold">Newest songs</h1>
+          <AiPlus songs={songs} />
         </div>
         <PageContent songs={songs} />
       </div>
     </div>
-  )
+  );
 }
